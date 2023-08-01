@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+        POSTGRES_USER: user
+        POSTGRES_PASSWORD: pass123
+        POSTGRES_DB: w2wbase
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    stdin_open: true
+    tty: true

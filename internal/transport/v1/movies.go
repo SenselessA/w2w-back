@@ -23,6 +23,11 @@ func (h *MoviesHandler) getByMovieId(c *fiber.Ctx) error {
 
 	movie, err := h.services.Movies.GetByMovieId(movieId)
 	if err != nil {
+		c.Status(fiber.StatusNotFound)
+		err := c.SendString("Ошибка сервера")
+		if err != nil {
+			return err
+		}
 		return err
 	}
 
